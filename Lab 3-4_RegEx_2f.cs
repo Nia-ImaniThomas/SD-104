@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-public class Example
+public class Lab 3-4_RegEx_2f
 {
     public static void Main()
     {
-        string pattern = @" [A-Z]";
+        string pattern = ;
         string substitution = @"";
         string input = @"Episode IV, A NEW HOPE It is a period of civil war. Rebel spaceships, striking from a hidden
 base, have won their first victory against the evil Galactic Empire. During the battle, Rebel spies
