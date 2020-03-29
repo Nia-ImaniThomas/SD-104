@@ -1,22 +1,30 @@
 ﻿using System;
 
-namespace Lab_5_6_If_Statement
+namespace Lab_8_RealityTV
 {
     class Program
     {
-       public struct Customer
+        static void Main(string[] args)
         {
-            public string first_name;
-            public string last_name;
-            public int age;
-            public bool hasMembership;
-        }
+            HouseHunter hhContestant = new HouseHunter("Full Stack Web Developer", 100000, 6, 3, 2, "Omar", "Smith", "2/4/1975",
+                "111 Brvo Way", "Los Angeles", "California", 90001, "888 -233-1234", "omar.smith@hotmail.com");
 
-        static void Main(string [] args)
-        {
+            ParadiseIsland piContestant = new ParadiseIsland("Female", "Carl", 2 "Patti", "Johnson", "5/4/1994", "211 Love Rd", "Los Angels",
+                "California", 90001, "988-444-1234", "patti.jognson@gmail.com");
 
-            Customer customer1 = new Customer();
+            AboveDeck adContestant = new AboveDeck(20, "American", "Captian", "Lee", "7/12/1964", "311 Bravo Rd", "Los Angels",
+                "California", 90001, "711-333-1234", "captian@gmail.com");
 
+            hhContestant.Submit();
+            hhContestant.Accept();
+
+
+            piContestant.Submit();
+            piContestant.Accept();
+
+
+            adContestant.Submit();
+            adContestant.Accept();
         }
     }
 }
