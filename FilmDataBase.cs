@@ -51,7 +51,7 @@ namespace Lab_11_5_FilmDataBase
             html.Append("  </body>\n");
             html.Append("</html>\n");
 
-            string htmlFile = "D:\\output\\newfilms.html";
+            string htmlFile = "C:\\output\\newfilms.html";
             File.WriteAllText(htmlFile, html.ToString());
         }
     }
