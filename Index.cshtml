@@ -1,0 +1,109 @@
+﻿<!--The "at symbol and curvy brakets"(Whats highlighted) is a block of C# code. Let’s create a new string called myText and give the
+value “This is a C# string”.-->
+@{
+    ViewData["Title"] = "Home Page";
+    string myText = "Bakin' With A Purpose";
+    <!--Let’s create an HTML unordered list using the elements from myArray. In the HTML
+    section of the Razor Page, add the following:-->
+    string[] myArray = { "Vanilla Cake", "Chocolate Cake", "Red Velet Cake", "Strawberry Pink Velvet Cake", "Spice Cake", "Cranberry Orange Cake", "Chocolate Whiskey Cake" };
+    int[] array2 = { 1, 2, 3, 4, 5, 6, 7 };
+}
+
+
+<div class="text-center">
+    <h1 class="display-4">Bakin' Life Better, LLC</h1>
+    <p>Specializing in <a href="https://www.instagram.com/sweetvibes_bakinlifebetter/">Cakes, Cupcakes, Cookies & More</a>!</p>
+    <p>@myText</p>
+</div>
+
+<!--In HTML, we begin an unordered list, then use C# to loop through our array and create
+<li> list items. Using the "at" variable name, we display the value of each array item from
+C#.-->
+<ul>
+    @foreach (string item in myArray)
+    {
+        <li>@item</li>
+    }
+</ul>
+<br />
+<!--We’ll start by adding a <table> element to the HTML. Then, we will loop through our
+array, adding a <tr> row for each item the array. Next, while still in our loop, we will add
+a nested loop for the second array, and generate a <td> cell/column for each item in the
+other array. Lastly, we’ll use some in-line CSS to apply a black border to the cells and
+set the width of the table cells.-->
+<table>
+    @foreach (int column in array2)
+    {
+        <tr>
+            <td style="border: 4px solid black" , width="40px">@column</td>
+            @foreach (string row in myArray)
+            {
+                <td style="border: 4px solid black" , width="40px">
+                    @if (column == 1)
+                    {@row}
+                else
+                {
+
+                }
+                </td>
+            }
+        </tr>
+    }
+</table>
+<br />
+<!--In this example, we will write some C# code that creates random junk data, then
+displays the junk we create on our page. We are just going to generate pure garbage
+here, and then drop it on the page.-->
+<!--We begin with a <p> paragraph tag.
+● We begin a block of C# code with a Razor block "at symbol and curvy brakets"
+● We create an array of bytes called data
+● For each item in the array, we assign a random byte code with the Random
+class.
+● For every byte, we cast it as a printable character
+● We print the character to the string using the syntax "at symbol"Html.DisplayFor( x => c)
+This is called an HTML helper and we will talk about this syntax in our next
+lesson. Note the use of the lambda here.
+
+    This shows up with letters and symbols...IT WORKS!-->
+<p>
+    @{
+        byte[] data = new byte[500];
+        for (int i = 0; i < data.Length; i++)
+        {
+            Random rand = new Random();
+
+            rand.NextBytes(data);
+            Char c = (char)data[i];
+            @Html.DisplayFor(x => c)
+        }
+    }
+</p>
+
+<br />
+
+<!--This C# Razor Syntax
+    We’ve created a C# variable Name, and applied LabelFor and TextBoxFor...-->
+<div>
+    @{ string Name = "Name";}
+
+
+    @Html.Label("Textbox1", "Label Text")
+    @Html.TextBox("Textbox1")
+
+    @Html.LabelFor(x => Name)
+    @Html.TextBoxFor(x => Name)
+</div>
+<!--Creates these HTML elements-->
+<br />
+<!--Another way to help us write HTML is to use Tag Helpers. Tag Helpers are slightly
+different from HTML helpers in that you still write HTML, but you get access to new
+attributes that don’t exist in pure HTML.
+Example of Tag Helpers….
+We are still writing HTML, but now can use new keywords like asp-controller and
+asp-for-->
+
+<from asp-controller="Home" asp-action="Privacy">
+    <label asp-for="@Name">Tag Helper Version</label>
+    <input asp-for="@Name" />
+
+</from>
