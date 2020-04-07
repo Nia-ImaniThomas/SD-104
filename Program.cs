@@ -1,33 +1,26 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
-namespace Lesson_8_Animal
-{//next principal of OOP_Inheritance
-    abstract class Animal
-    {/*Below, we have a class called Animal. All of our animals have a name, a certain
-number of arms and legs, and could be dangerous or furry. Additionally, all of our
-animals can sleep and eat.*/
-        protected string name;
-        protected int numOfLegs;
-        protected int numOfArms;
-        protected bool isDangerous;
-        protected bool isFurry;
-        public void Sleep()
+namespace FirstWebApp
+{
+    public class Program
+    {
+        public static void Main(string[] args)
         {
-            Console.WriteLine("The" + this.GetType() + "goes to sleep.");
+            CreateHostBuilder(args).Build().Run();
         }
 
-        public void Eat()
-        {
-            Console.WriteLine("The" + this.GetType() + "goes to eat.");
-        }
-
-        public virtual void Breath()
-        {
-            Console.WriteLine("The animal breaths through it's nose!");
-        }
-
-        public abstract int Sell();
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }
